@@ -1,19 +1,32 @@
 import React from "react";
 import { Forms, Button } from "react-materialize";
-
-onKeyUp {
-  if ()
-}
+import searchBand from "../actions/search_band.js";
+import { connect } from "react-redux";
 
 class Search extends React.Component {
+  constructor(props) {
+    super(props);
+    this.clickHandler = this.clickHandler.bind(this);
+  }
+
+  clickHandler() {
+    let searchQuery = this.refs.search.value;
+    this.props.dispatch(searchBand(searchQuery));
+    this.refs.search.value = " ";
+  }
+
   render() {
     return (
       <main className="row search-field">
         <div>
-          <input className="col s4 offset-s3" placeholder="search an artist" />
+          <input
+            ref="search"
+            className="col s4 offset-s3"
+            placeholder="search an artist"
+          />
           <Button
-            onClick={this.Search}
-            onKeyUp={this.Search}
+            onClick={this.clickHandler}
+            onKeyUp={this.keyHandler}
             floating
             large
             className="search-btn"
@@ -26,4 +39,4 @@ class Search extends React.Component {
   }
 }
 
-export default Search;
+export default connect()(Search);
