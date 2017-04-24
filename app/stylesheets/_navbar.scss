@@ -1,0 +1,15 @@
+@import "vars";
+
+.nav {
+
+  background: $color-three;
+  display: flex;
+  * {
+    color: #414345;
+    list-style: none;
+  }
+  *:hover {
+    color: $color-five;
+    font-size: 115%;
+  }
+}

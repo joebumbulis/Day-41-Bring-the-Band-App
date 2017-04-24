@@ -2,6 +2,9 @@
 
 ##### token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb250ZW50X2lkIjoxNTU1MiwiY29udGVudF90eXBlIjoiQXNzaWdubWVudCJ9.crav03bNvfJBE20jeFEqc5iS-PK268f_i6kEDv-s4Jk
 
+## User Story:
+* As a patron, I want to vote for my favorite bands so that the venue knows who to invite to play.  
+
 ### Band Time
 
 A local music venue has asked you to build a promotional app: Bring The Band! Bring the band will allow users to vote for musicians they want to see at the venue. The venue hopes to gain a following, and boost their patron engagement by tracking popular bands, and trends in their market share.
