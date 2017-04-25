@@ -10,14 +10,24 @@ import { Navbar, Icon } from "react-materialize";
 
 const Nav = () => (
   <nav className="nav row teal lighten-5">
-    <li className="col s8">Bring the Band</li>
-    <div className="navlinks col s4">
-      <li className="col s6">
+    <li className="col s6">Bring the Band</li>
+    <div className="navlinks col s6">
+      <li className="col s3">
         <Link to="/search"><Icon className="col s4">search</Icon>Search</Link>
       </li>
-      <li className="col s6">
+      <li className="col s3">
         <Link to="/results">
           <Icon className="col s4">assessment</Icon>Results
+        </Link>
+      </li>
+      <li className="col s3">
+        <Link to="/results">
+          <Icon className="col s4">perm_identity</Icon>LogIn
+        </Link>
+      </li>
+      <li className="col s3">
+        <Link to="/results">
+          <Icon className="col s4">mode_edit</Icon>SignUp
         </Link>
       </li>
     </div>

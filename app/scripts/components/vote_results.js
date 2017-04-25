@@ -39,7 +39,7 @@ class VoteResults extends React.Component {
                   }
                   actions={[
                     <div className="col s12 offset-s2">
-                      <a href={vote.uri}>Vote for this Artist</a>
+                      <a href={vote.href}>User Choice</a>
                       <Button
                         floating
                         large
