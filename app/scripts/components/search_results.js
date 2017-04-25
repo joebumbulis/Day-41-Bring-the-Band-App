@@ -8,16 +8,20 @@ import {
   Button,
   Icon
 } from "react-materialize";
-// import { connect } from "react-redux";
-// import container from "../containers/all.js";
+import voteBand from "../actions/vote_band.js";
+import { connect } from "react-redux";
+import container from "../containers/all.js";
 
 class SearchResults extends React.Component {
   constructor(props) {
     super(props);
+
+    this.clickHandler = this.clickHandler.bind(this);
   }
 
   clickHandler() {
-    console.log("Click Vote Yes");
+    let band = this.props.bands.band;
+    this.props.dispatch(voteBand(band));
   }
 
   render() {
@@ -25,31 +29,32 @@ class SearchResults extends React.Component {
       <div>
         {this.props.bands.map((band, i) => {
           return (
-            <div>
-              <div>
-                <Col m={6} s={12}>
-                  <Card
-                    className="small"
-                    header={
-                      <CardTitle image={band.images[1]}>{band.name}</CardTitle>
-                    }
-                    actions={[
-                      <div>
-                        <a href="#">Vote for this Artist</a>
-                        {" "}
-                        <Button
-                          onClick={this.clickHandler}
-                          floating
-                          large
-                          className="search-btn"
-                          waves="light"
-                          icon="thumb_up"
-                        />
-                      </div>
-                    ]}
-                  />
-                </Col>
-              </div>
+            <div key={i}>
+
+              <Col l={4} m={6} s={12}>
+                <Card
+                  className="medium teal lighten-5"
+                  header={
+                    <CardTitle image={band.images[1].url}>
+                      {band.name}
+                    </CardTitle>
+                  }
+                  actions={[
+                    <div className="col s12 offset-s2">
+                      <a href={band.uri}>Vote for this Artist</a>
+                      <Button
+                        onClick={this.clickHandler}
+                        floating
+                        large
+                        className="search-btn"
+                        waves="light"
+                        icon="thumb_up"
+                      />
+                    </div>
+                  ]}
+                />
+              </Col>
+
             </div>
           );
         })}
@@ -57,4 +62,4 @@ class SearchResults extends React.Component {
     );
   }
 }
-export default SearchResults;
+export default connect()(SearchResults);

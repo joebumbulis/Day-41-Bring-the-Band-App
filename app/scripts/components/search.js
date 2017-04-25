@@ -23,7 +23,7 @@ class Search extends React.Component {
         <div>
           <input
             ref="search"
-            className="col s4 offset-s3"
+            className="col s4 offset-s4"
             placeholder="search an artist"
           />
           <Button
@@ -33,7 +33,7 @@ class Search extends React.Component {
             large
             className="search-btn"
             waves="light"
-            icon="add"
+            icon="search"
           />
         </div>
         <div>

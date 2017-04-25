@@ -2,7 +2,6 @@
 
 .nav {
 
-  background: $color-three;
   display: flex;
   * {
     color: #414345;
@@ -10,7 +9,7 @@
   }
   *:hover {
     color: $color-five;
-    font-size: 110%;
+    font-size: 105%;
   }
 }
 
