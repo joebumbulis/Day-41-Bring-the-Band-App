@@ -19,8 +19,7 @@ class SearchResults extends React.Component {
     this.clickHandler = this.clickHandler.bind(this);
   }
 
-  clickHandler() {
-    let band = this.props.bands.band;
+  clickHandler(band) {
     this.props.dispatch(voteBand(band));
   }
 
@@ -29,7 +28,7 @@ class SearchResults extends React.Component {
       <div>
         {this.props.bands.map((band, i) => {
           return (
-            <div key={i}>
+            <div key={i} className="align-left">
 
               <Col l={4} m={6} s={12}>
                 <Card
@@ -43,7 +42,7 @@ class SearchResults extends React.Component {
                     <div className="col s12 offset-s2">
                       <a href={band.uri}>Vote for this Artist</a>
                       <Button
-                        onClick={this.clickHandler}
+                        onClick={() => this.clickHandler(band)}
                         floating
                         large
                         className="search-btn"

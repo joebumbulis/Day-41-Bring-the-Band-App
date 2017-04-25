@@ -16,6 +16,13 @@ export default function AppReducer(state, action) {
         searching: false,
         bands: action.data.artists.items
       });
+
+    case "VOTE_BAND":
+      return Object.assign({}, state, {
+        name: action.name,
+        image: action.image,
+        hrf: action.hrf
+      });
   }
 
   console.log("Unhandled State!");

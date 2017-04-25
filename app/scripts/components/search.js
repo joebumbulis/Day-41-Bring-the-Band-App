@@ -19,8 +19,8 @@ class Search extends React.Component {
 
   render() {
     return (
-      <main className="row search-field">
-        <div>
+      <main className="search-field">
+        <div className="row">
           <input
             ref="search"
             className="col s4 offset-s4"
@@ -36,7 +36,7 @@ class Search extends React.Component {
             icon="search"
           />
         </div>
-        <div>
+        <div className="row">
           <SearchResults
             searching={this.props.searching}
             bands={this.props.bands}
