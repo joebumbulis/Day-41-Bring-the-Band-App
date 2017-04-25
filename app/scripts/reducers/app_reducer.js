@@ -14,7 +14,7 @@ export default function AppReducer(state, action) {
     case "DISPLAY_BANDS":
       return Object.assign({}, state, {
         searching: false,
-        bands: action.data.artists.item
+        bands: action.data.artists.items
       });
   }
 

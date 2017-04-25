@@ -2,6 +2,7 @@ import React from "react";
 import { Forms, Button } from "react-materialize";
 import searchBand from "../actions/search_band.js";
 import { connect } from "react-redux";
+import SearchResults from "./search_results.js";
 
 class Search extends React.Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class Search extends React.Component {
   clickHandler() {
     let searchQuery = this.refs.search.value;
     this.props.dispatch(searchBand(searchQuery));
-    this.refs.search.value = " ";
+    this.refs.search.value = "search another artist";
   }
 
   render() {
@@ -32,6 +33,12 @@ class Search extends React.Component {
             className="search-btn"
             waves="light"
             icon="add"
+          />
+        </div>
+        <div>
+          <SearchResults
+            searching={this.props.searching}
+            bands={this.props.bands}
           />
         </div>
       </main>
