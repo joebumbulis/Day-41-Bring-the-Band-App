@@ -10,7 +10,6 @@ import {
 } from "react-materialize";
 import voteBand from "../actions/vote_band.js";
 import { connect } from "react-redux";
-import container from "../containers/all.js";
 
 class SearchResults extends React.Component {
   constructor(props) {
