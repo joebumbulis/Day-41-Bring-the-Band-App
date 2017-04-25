@@ -8,10 +8,11 @@ import SearchResults from "./search_results.js";
 class Search extends React.Component {
   constructor(props) {
     super(props);
-    this.clickHandler = this.clickHandler.bind(this);
+    this.submitHandler = this.submitHandler.bind(this);
   }
 
-  clickHandler() {
+  submitHandler(e) {
+    e.preventDefault();
     let searchQuery = this.refs.search.value;
     this.props.dispatch(searchBand(searchQuery));
     this.refs.search.value = "search another artist";
@@ -19,30 +20,31 @@ class Search extends React.Component {
 
   render() {
     return (
-      <main className="search-field">
-        <div className="row">
-          <input
-            ref="search"
-            className="col s4 offset-s4"
-            placeholder="search an artist"
-          />
-          <Button
-            onClick={this.clickHandler}
-            onKeyUp={this.keyHandler}
-            floating
-            large
-            className="search-btn"
-            waves="light"
-            icon="search"
-          />
-        </div>
+      <div>
+        <form onSubmit={this.submitHandler} className="search-field">
+          <div className="row">
+            <input
+              ref="search"
+              className="col s4 offset-s4"
+              placeholder="search an artist"
+            />
+            <Button
+              floating
+              large
+              className="search-btn"
+              waves="light"
+              icon="search"
+            />
+          </div>
+        </form>
         <div className="row">
           <SearchResults
             searching={this.props.searching}
             bands={this.props.bands}
           />
         </div>
-      </main>
+
+      </div>
     );
   }
 }

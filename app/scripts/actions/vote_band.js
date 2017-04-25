@@ -2,10 +2,16 @@ export default function voteBand(band) {
   console.log(band);
 
   return function(dispatch) {
+    var bandImage = "";
+    if (band.images.length >= 2) {
+      bandImage = band.images[1].url;
+    } else {
+      bandImage = "http://www.freeiconspng.com/uploads/no-image-icon-11.PNG";
+    }
     dispatch({
       type: "VOTE_BAND",
       name: band.name,
-      image: band.images[1].url,
+      image: bandImage,
       hrf: band.uri
     });
 
@@ -22,7 +28,7 @@ export default function voteBand(band) {
 
       data: JSON.stringify({
         name: band.name,
-        image: band.images[1].url,
+        image: bandImage,
         hrf: band.uri
       })
     }).then((data, response) => {

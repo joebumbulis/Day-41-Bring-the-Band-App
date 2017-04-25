@@ -8,46 +8,39 @@ import {
   Button,
   Icon
 } from "react-materialize";
-import voteBand from "../actions/vote_band.js";
 import { connect } from "react-redux";
 
-class SearchResults extends React.Component {
+class VoteResults extends React.Component {
   constructor(props) {
     super(props);
-
-    this.clickHandler = this.clickHandler.bind(this);
-  }
-
-  clickHandler(band) {
-    this.props.dispatch(voteBand(band));
   }
 
   render() {
+    console.log(this.props);
     return (
-      <div>
-        {this.props.bands.map((band, i) => {
+      <div className="row">
+        {this.props.votes.map((vote, j) => {
           var imageSource = " ";
-          if (band.images.length >= 2) {
-            imageSource = band.images[1].url;
+          if (vote.image) {
+            imageSource = vote.image;
           } else {
             imageSource =
               "http://www.freeiconspng.com/uploads/no-image-icon-11.PNG";
           }
           return (
-            <div key={i} className="align-left">
+            <div key={j} className="align-left">
               <Col l={4} m={6} s={12}>
                 <Card
                   className="medium teal lighten-5"
                   header={
                     <CardTitle image={imageSource}>
-                      {band.name}
+                      {vote.name}
                     </CardTitle>
                   }
                   actions={[
                     <div className="col s12 offset-s2">
-                      <a href={band.uri}>Vote for this Artist</a>
+                      <a href={vote.uri}>Vote for this Artist</a>
                       <Button
-                        onClick={() => this.clickHandler(band)}
                         floating
                         large
                         className="search-btn"
@@ -65,4 +58,4 @@ class SearchResults extends React.Component {
     );
   }
 }
-export default connect()(SearchResults);
+export default VoteResults;

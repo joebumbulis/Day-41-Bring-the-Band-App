@@ -18,11 +18,14 @@ export default function AppReducer(state, action) {
       });
 
     case "VOTE_BAND":
-      return Object.assign({}, state, {
+      let newVotes = state.votes.slice();
+      let vote = {
         name: action.name,
         image: action.image,
-        hrf: action.hrf
-      });
+        hrf: action.uri
+      };
+      newVotes.push(vote);
+      return Object.assign({}, state, { votes: newVotes });
   }
 
   console.log("Unhandled State!");
