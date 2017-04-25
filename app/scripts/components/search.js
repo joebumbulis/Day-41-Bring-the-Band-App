@@ -2,6 +2,7 @@ import React from "react";
 import { Forms, Button } from "react-materialize";
 import searchBand from "../actions/search_band.js";
 import { connect } from "react-redux";
+import container from "../containers/all.js";
 import SearchResults from "./search_results.js";
 
 class Search extends React.Component {
@@ -46,4 +47,4 @@ class Search extends React.Component {
   }
 }
 
-export default connect()(Search);
+export default connect(container.allState)(Search);
