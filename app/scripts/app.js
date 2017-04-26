@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import AppRoot from "./components/app_root.js";
 import Search from "./components/search.js";
 import Results from "./components/results.js";
-import { Navbar, Icon } from "react-materialize";
+import { Navbar, Icon, Modal, Button } from "react-materialize";
 
 const Nav = () => (
   <nav className="nav row teal lighten-5">
@@ -21,9 +21,12 @@ const Nav = () => (
         </Link>
       </li>
       <li className="col s3">
-        <Link to="/results">
-          <Icon className="col s4">perm_identity</Icon>LogIn
-        </Link>
+        <Modal
+          header="Modal Header"
+          trigger={<Button waves="light">LogIn</Button>}
+        >
+          <p>Words about things</p>
+        </Modal>
       </li>
       <li className="col s3">
         <Link to="/results">
