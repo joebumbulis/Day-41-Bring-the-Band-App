@@ -26,3 +26,18 @@ html {
 .show-modal {
   display: inline-block;
 }
+
+.modal {
+  width: 40%;
+  height: 40%;
+  position: fixed;
+  z-index: 3;
+  padding-top: 5rem;
+  background-color: rgba(237, 247, 242, 242);
+  opacity: .95;
+  .btn {
+    text-align: center;
+    width: 100%;
+    
+  }
+}

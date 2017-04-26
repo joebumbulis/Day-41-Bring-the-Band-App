@@ -1,14 +1,17 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { Navbar, Icon, Button } from "react-materialize";
+import { Navbar, Icon, Button, Modal } from "react-materialize";
 
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      login: false
+      login: false,
+      signup: false
     };
     this.clickLogIn = this.clickLogIn.bind(this);
+    this.clickSignUp = this.clickSignUp.bind(this);
+    this.sendSignUp = this.sendSignUp.bind(this);
   }
 
   clickLogIn(e) {
@@ -18,10 +21,24 @@ class NavBar extends React.Component {
     });
   }
 
-  SendLogIn(e) {
+  clickSignUp(e) {
+    e.preventDefault();
+    this.setState({
+      signup: true
+    });
+  }
+
+  sendSignUp(e) {
     e.preventDefault();
     this.setState({
       login: false
+    });
+  }
+
+  SendLogIn(e) {
+    e.preventDefault();
+    this.setState({
+      signup: false
     });
   }
 
@@ -29,6 +46,10 @@ class NavBar extends React.Component {
     var pClass = "hide-modal";
     if (this.state.login) {
       pClass = "show-modal";
+    }
+    var qClass = "hide-modal";
+    if (this.state.signup) {
+      qClass = "show-modal";
     }
     return (
       <div>
@@ -48,15 +69,34 @@ class NavBar extends React.Component {
             <li onClick={this.clickLogIn} className="col s3">
               <Icon className="col s4">perm_identity</Icon>LogIn
             </li>
-            <li className="col s3">
+            <li onClick={this.clickSignUp} className="col s3">
               <Icon className="col s4">mode_edit</Icon>SignUp
             </li>
           </div>
         </nav>
-        <form className={pClass}>
-          <input placeholder="username" />
-          <input placeholder="password" />
-          <button onSubmit={this.sendLogIn}>Sign In</button>
+        <form className={`modal teal lighten-5 ${pClass}`}>
+          <div className="container">
+            <input placeholder="email" />
+            <input placeholder="password" />
+            <Button
+              className="teal lighten-5 black-text"
+              onSubmit={this.sendLogIn}
+            >
+              Sign In
+            </Button>
+          </div>
+        </form>
+        <form className={`modal teal lighten-5 ${qClass}`}>
+          <div className="container">
+            <input placeholder="email" />
+            <input placeholder="password" />
+            <Button
+              className="teal lighten-5 black-text"
+              onSubmit={this.sendSignUp}
+            >
+              Sign Up
+            </Button>
+          </div>
         </form>
       </div>
     );
