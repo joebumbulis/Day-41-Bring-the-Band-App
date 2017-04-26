@@ -4,45 +4,16 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
 import AppRoot from "./components/app_root.js";
+import NavBar from "./components/nav_bar.js";
 import Search from "./components/search.js";
 import Results from "./components/results.js";
-import { Navbar, Icon, Modal, Button } from "react-materialize";
-
-const Nav = () => (
-  <nav className="nav row teal lighten-5">
-    <li className="col s6">Bring the Band</li>
-    <div className="navlinks col s6">
-      <li className="col s3">
-        <Link to="/search"><Icon className="col s4">search</Icon>Search</Link>
-      </li>
-      <li className="col s3">
-        <Link to="/results">
-          <Icon className="col s4">assessment</Icon>Results
-        </Link>
-      </li>
-      <li className="col s3">
-        <Modal
-          header="Modal Header"
-          trigger={<Button waves="light">LogIn</Button>}
-        >
-          <p>Words about things</p>
-        </Modal>
-      </li>
-      <li className="col s3">
-        <Link to="/results">
-          <Icon className="col s4">mode_edit</Icon>SignUp
-        </Link>
-      </li>
-    </div>
-  </nav>
-);
 
 export default function app() {
   render(
     <Provider store={store}>
       <Router>
         <div>
-          <Nav />
+          <NavBar />
           <Route exact path="/" component={AppRoot} />
           <Route exact path="/search" component={Search} />
           <Route exact path="/results" component={Results} />

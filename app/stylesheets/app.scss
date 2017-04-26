@@ -15,3 +15,14 @@ html {
     color: $color-three;
   }
 }
+
+.card-content {
+  height: 0;
+}
+
+.hide-modal {
+  display: none;
+}
+.show-modal {
+  display: inline-block;
+}

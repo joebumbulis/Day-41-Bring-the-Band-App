@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Route, Link, NavLink } from "react-router-dom";
+import { Route, Link, NavLink, Modal } from "react-router-dom";
 
 class AppRoot extends React.Component {
   render() {
@@ -10,7 +10,6 @@ class AppRoot extends React.Component {
         <p>
           Vote for your favorite artists in order to bring them to our music venue!
         </p>
-        <section />
       </main>
     );
   }

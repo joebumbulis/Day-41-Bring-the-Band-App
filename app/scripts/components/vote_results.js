@@ -31,7 +31,7 @@ class VoteResults extends React.Component {
             <div key={j} className="align-left">
               <Col l={4} m={6} s={12}>
                 <Card
-                  className="medium teal lighten-5"
+                  className="small teal lighten-5"
                   header={
                     <CardTitle image={imageSource}>
                       {vote.name}
