@@ -25,7 +25,7 @@ class SearchResults extends React.Component {
   render() {
     let searching = "";
     if (this.props.searching) {
-      searching = <h2>searching</h2>
+      searching = <h2 className="searching">searching...</h2>;
     }
     return (
       <div>

@@ -30,12 +30,19 @@ class NavBar extends React.Component {
 
   sendSignUp(e) {
     e.preventDefault();
+    let username = this.refs.newUser;
+    let email = this.refs.newEmail;
+    let password = this.refs.newPassword;
+    this.props.dispatch(SignUp(username, email, password));
     this.setState({
       login: false
     });
   }
 
   SendLogIn(e) {
+    let email = this.refs.email;
+    let password = this.refs.password;
+    this.props.dispatch(LogIn(email, password));
     e.preventDefault();
     this.setState({
       signup: false
@@ -76,8 +83,8 @@ class NavBar extends React.Component {
         </nav>
         <form className={`modal teal lighten-5 ${pClass}`}>
           <div className="container">
-            <input placeholder="email" />
-            <input placeholder="password" />
+            <input ref="user" placeholder="username" />
+            <input ref="password" placeholder="password" type="password" />
             <Button
               className="teal lighten-5 black-text"
               onSubmit={this.sendLogIn}
@@ -88,8 +95,9 @@ class NavBar extends React.Component {
         </form>
         <form className={`modal teal lighten-5 ${qClass}`}>
           <div className="container">
-            <input placeholder="email" />
-            <input placeholder="password" />
+            <input ref="newUser" placeholder="username" />
+            <input ref="newEmail" placeholder="email" />
+            <input ref="newPassword" placeholder="password" type="password" />
             <Button
               className="teal lighten-5 black-text"
               onSubmit={this.sendSignUp}
