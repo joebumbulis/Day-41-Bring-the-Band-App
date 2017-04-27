@@ -1,6 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Navbar, Icon, Button, Modal } from "react-materialize";
+import { connect } from "react-redux";
+import logIn from "../actions/log_in.js";
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -12,6 +14,7 @@ class NavBar extends React.Component {
     this.clickLogIn = this.clickLogIn.bind(this);
     this.clickSignUp = this.clickSignUp.bind(this);
     this.sendSignUp = this.sendSignUp.bind(this);
+    this.sendLogIn = this.sendLogIn.bind(this);
   }
 
   clickLogIn(e) {
@@ -30,23 +33,23 @@ class NavBar extends React.Component {
 
   sendSignUp(e) {
     e.preventDefault();
-    let username = this.refs.newUser;
-    let email = this.refs.newEmail;
-    let password = this.refs.newPassword;
-    this.props.dispatch(SignUp(username, email, password));
-    this.setState({
-      login: false
-    });
-  }
-
-  SendLogIn(e) {
-    let email = this.refs.email;
-    let password = this.refs.password;
-    this.props.dispatch(LogIn(email, password));
-    e.preventDefault();
+    // let username = this.refs.newUser.value;
+    // let email = this.refs.newEmail.value;
+    // let password = this.refs.newPassword.value;
+    // this.props.dispatch(signUp(username, email, password));
     this.setState({
       signup: false
     });
+  }
+
+  sendLogIn(e) {
+    e.preventDefault();
+    this.setState({
+      login: false
+    });
+    let username = this.refs.user.value;
+    let password = this.refs.password.value;
+    this.props.dispatch(logIn(username, password));
   }
 
   render() {
@@ -81,27 +84,27 @@ class NavBar extends React.Component {
             </li>
           </div>
         </nav>
-        <form className={`modal teal lighten-5 ${pClass}`}>
+        <form
+          onSubmit={this.sendLogIn}
+          className={`modal teal lighten-5 ${pClass}`}
+        >
           <div className="container">
-            <input ref="user" placeholder="username" />
+            <input ref="user" placeholder="username" type="text" aria-label />
             <input ref="password" placeholder="password" type="password" />
-            <Button
-              className="teal lighten-5 black-text"
-              onSubmit={this.sendLogIn}
-            >
+            <Button className="teal lighten-5 black-text">
               Sign In
             </Button>
           </div>
         </form>
-        <form className={`modal teal lighten-5 ${qClass}`}>
+        <form
+          onSubmit={this.sendSignUp}
+          className={`modal teal lighten-5 ${qClass}`}
+        >
           <div className="container">
-            <input ref="newUser" placeholder="username" />
-            <input ref="newEmail" placeholder="email" />
+            <input ref="newUser" placeholder="username" type="text" />
+            <input ref="newEmail" placeholder="email" type="text" />
             <input ref="newPassword" placeholder="password" type="password" />
-            <Button
-              className="teal lighten-5 black-text"
-              onSubmit={this.sendSignUp}
-            >
+            <Button className="teal lighten-5 black-text">
               Sign Up
             </Button>
           </div>
@@ -110,4 +113,4 @@ class NavBar extends React.Component {
     );
   }
 }
-export default NavBar;
+export default connect()(NavBar);

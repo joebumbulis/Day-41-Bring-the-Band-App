@@ -3,7 +3,8 @@ export default function AppReducer(state, action) {
     return {
       searching: false,
       bands: [],
-      votes: []
+      votes: [],
+      userInfo: ""
     };
   }
 
@@ -26,6 +27,9 @@ export default function AppReducer(state, action) {
       };
       newVotes.push(vote);
       return Object.assign({}, state, { votes: newVotes });
+
+    case "LOG_IN":
+      return Object.assign({}, state, { userInfo: action.data });
   }
 
   console.log("Unhandled State!");
