@@ -30,6 +30,9 @@ export default function AppReducer(state, action) {
 
     case "LOG_IN":
       return Object.assign({}, state, { userInfo: action.data });
+
+    case "REGISTER":
+      return Object.assign({}, state, { userInfo: action.data });
   }
 
   console.log("Unhandled State!");

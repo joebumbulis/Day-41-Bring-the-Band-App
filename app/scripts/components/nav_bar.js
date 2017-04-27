@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Navbar, Icon, Button, Modal } from "react-materialize";
 import { connect } from "react-redux";
 import logIn from "../actions/log_in.js";
+import signUp from "../actions/sign_up.js";
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -33,13 +34,13 @@ class NavBar extends React.Component {
 
   sendSignUp(e) {
     e.preventDefault();
-    // let username = this.refs.newUser.value;
-    // let email = this.refs.newEmail.value;
-    // let password = this.refs.newPassword.value;
-    // this.props.dispatch(signUp(username, email, password));
     this.setState({
       signup: false
     });
+    let username = this.refs.newUser.value;
+    let email = this.refs.newEmail.value;
+    let password = this.refs.newPassword.value;
+    this.props.dispatch(signUp(username, email, password));
   }
 
   sendLogIn(e) {
